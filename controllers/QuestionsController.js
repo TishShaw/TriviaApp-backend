@@ -6,12 +6,12 @@ const Question = require('../models/Question');
 
 // Index: GET all the questions
 router.get('/', async (req, res, next) => {
-    try {
-        const questions = await Question.find({});
+	try {
+		const questions = await Question.find({});
 		res.json(questions);
-    } catch (error) {
-        next(error);
-    }
-})
+	} catch (error) {
+		next(error);
+	}
+});
 
 module.exports = router;

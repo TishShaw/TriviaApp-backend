@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const QuestionSchema = new Schema({
     category: String,
     question: String,
-    choices: [String],
+    choices: [subSchema],
 })
 
 const Question = mongoose.model('Question', QuestionSchema);

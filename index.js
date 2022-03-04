@@ -6,12 +6,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.redirect('/api/questions');
+    res.send('hello');
 });
-
-const questionsController = require('./controllers/QuestionsController');
-app.use('/api/questions/', questionsController);
-
 
 app.listen(app.get('port'), () => {
     console.log(`✅ PORT: ${app.get('port')} 🌟`);
