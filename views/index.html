@@ -14,19 +14,36 @@
       #messages > li { padding: 0.5rem 1rem; }
       #messages > li:nth-child(odd) { background: #efefef; }
     </style>
+    <!-- import tailwind.css -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
     <!-- import socket.io -->
-    <script src="/public/script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.js" defer></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.esm.min.js" defer></script>
   </head>
-  <body>
-    <h1>Hello Trivia Game</h1>
-
-
-
+  <body class="bg-pink-200">
+    <div class="container flex justify-center flex-col items-center m-auto h-screen">
+      <h1 class="text-5xl text-white">Welcome to <span class="text-purple-800">Trivia Brain</span>!</h1>
+    <form class="bg-white w-64 rounded p-6 shadow-md w-1/2 mt-10" id="user_form">
+      <h3 class="text-xl mb-4">Enter your name to join:</h3>
+      <input class="border-gray-500 rounded w-full border shawdow-md p-4" type="text" id="name" placeholder="Enter your name here..." name="username">
+      <button class="border ">Join room</button>
+    </form>
+    </div>
     
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
+
+      const user_form = document.getElementById('user_form');
+      const user_input = document.getElementById('name');
+
+      user_form.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        let username = user_input.value;
+        socket.emit('user_joined', username);
+      });
+
     </script>
   </body>
 </html>
